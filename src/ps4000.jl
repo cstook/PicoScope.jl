@@ -1,7 +1,7 @@
 #include("ps4000blockready.jl")
 include("ps4000closeunit.jl")
 #include("ps4000dataready.jl")
-#include("ps4000enumerateunits.jl")
+include("ps4000enumerateunits.jl")
 #include("ps4000flashled.jl")
 #include("ps4000getchannelinformation.jl")
 #include("ps4000getmaxdownsampleratio.jl")

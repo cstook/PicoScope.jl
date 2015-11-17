@@ -4,7 +4,7 @@ export ps4000openunit
 
 function ps4000openunit()
   handle = Ref{UInt16}()
-  status = ccall((:ps4000OpenUnit, ps4000driver),
+  ps_status = ccall((:ps4000OpenUnit, ps4000driver),
                   PicoStatus,
                   (Ref{UInt16},),
                   handle)
