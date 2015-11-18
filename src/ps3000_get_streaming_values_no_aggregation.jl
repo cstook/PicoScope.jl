@@ -19,7 +19,7 @@ function ps3000_get_streaming_values_no_aggregation!(handle        :: Int16,
   overflow = Ref{Int16}           # bitfield, see doc
   triggered_at = Ref{UInt32}      # index trigger occured at
   triggered = Ref{UInt32}         # was there a valid trigger?
-    number_written_to_buffer = ccall((:ps3000_get_streaming_values, ps3000driver),UInt32,
+    number_written_to_buffer = ccall((:ps3000_get_streaming_values_no_aggregation, ps3000driver),UInt32,
     (Int16, Ref{Cdouble},
     Ptr{Int16},
     Ptr{Int16},

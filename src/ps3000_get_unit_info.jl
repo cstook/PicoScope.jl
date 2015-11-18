@@ -1,6 +1,6 @@
 # ps3000_get_unit_info.jl
 
-export ps3000_get_unit_info
+export ps3000_get_unit_info, PS3000GetUnitInfoLine
 
 function ps3000_get_unit_info(handle :: Int16,
                               line   :: Int16)
