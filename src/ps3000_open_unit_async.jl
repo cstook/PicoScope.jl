@@ -3,7 +3,7 @@
 export ps3000_open_unit_async
 
 function ps3000_open_unit_async()
-  open_unit_async_status = ccall(:ps3000_open_unit_async, ps3000driver), Int16, (),)
+  open_unit_async_status = ccall(:ps3000_open_unit_async, ps3000driver), Int16, ())
   return open_unit_async_status
 end
 

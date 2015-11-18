@@ -21,9 +21,8 @@ include("ps3000_save_streaming_data.jl")
 include("ps3000_set_channel.jl")
 include("ps3000_set_ets.jl")
 # include("ps3000_set_siggen.jl")  # I don't have a signal generator in my scope
-#include("ps3000_set_trigger.jl")
-#include("ps3000_set_trigger2.jl")
-#include("ps3000_stop.jl")
+include("ps3000_set_trigger.jl")  # and ps3000_set_trigger2
+include("ps3000_stop.jl")
 #include("ps3000SetAdvTriggerChannelConditions.jl")
 #include("ps3000SetAdvTriggerChannelDirections.jl")
 #include("ps3000SetAdvTriggerChannelProperties.jl")
