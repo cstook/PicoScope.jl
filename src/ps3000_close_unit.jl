@@ -4,7 +4,7 @@ export ps3000_close_unit
 
 function ps3000_close_unit(handle::Int16)
   ps_status = ccall((:ps3000_close_unit, ps3000driver),
-                  UInt16,
+                  Int16,
                   (Int16,),
                   handle)
   if ps_status == 0
