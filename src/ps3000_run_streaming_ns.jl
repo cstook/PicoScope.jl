@@ -8,7 +8,7 @@ function ps3000_run_streaming_ns(handle :: Int16,
                                  max_samples,
                                  auto_stop,
                                  no_of_samples_per_aggeregate,
-                                 overview_buffer_size = 15000)
+                                 overview_buffer_size = 0x4000)
   ps_status = ccall((:ps3000_run_streaming_ns, ps3000driver), Int16,
     (Int16, UInt32, Int16, UInt32, Int16, UInt32, Uint32),
     handle, sample_interval, time_unit, max_samples, auto_stop,
@@ -25,7 +25,7 @@ function ps3000_run_streaming_ns(handle :: Int16,
                                  max_samples,
                                  auto_stop::Bool,
                                  no_of_samples_per_aggeregate,
-                                 overview_buffer_size = 15000)
+                                 overview_buffer_size = 0x4000)
   ps3000_run_streaming_ns(handle,
                           sample_interval,
                           time_unit,
@@ -35,5 +35,3 @@ function ps3000_run_streaming_ns(handle :: Int16,
                           overview_buffer_size)
 
 end
-
-                          )
