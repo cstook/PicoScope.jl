@@ -1,6 +1,6 @@
 # ps3000_get_streaming_values_no_aggregation.jl
 
-export ps3000_get_streaming_values_no_aggregation
+export ps3000_get_streaming_values_no_aggregation!, StreamingBufferNoAggregation
 
 immutable StreamingBufferNoAggregation
   a :: Array{Int16,1}

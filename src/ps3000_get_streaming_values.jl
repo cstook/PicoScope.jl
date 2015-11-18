@@ -1,6 +1,6 @@
 # ps3000_get_streaming_values.jl
 
-export ps3000_get_streaming_values, StreamingBufferAggregation
+export ps3000_get_streaming_values!, StreamingBufferAggregation
 
 immutable StreamingBuffer
   a_max :: Array{Int16,1}
