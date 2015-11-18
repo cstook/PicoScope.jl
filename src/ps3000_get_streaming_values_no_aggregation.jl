@@ -14,7 +14,7 @@ end
 function ps3000_get_streaming_values_no_aggregation!(handle        :: Int16,
                                                       st           :: Float64,
                                                       buffer       :: StreamingBufferNoAggregation, 
-                                                      no_of_values :: UInt32)
+                                                      no_of_values)
   start_time = Ref{Float64}(st)   # start, relative to trigger, time in ns
   overflow = Ref{Int16}           # bitfield, see doc
   triggered_at = Ref{UInt32}      # index trigger occured at

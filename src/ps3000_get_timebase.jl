@@ -2,10 +2,7 @@
 
 export ps3000_get_timebase
 
-function ps3000_get_timebase(handle::Int16,
-                             timebase::Int16,
-                             no_of_samples::Int32,
-                             oversample::Int16)
+function ps3000_get_timebase(handle::Int16, timebase, no_of_samples, oversample)
   time_interval = Ref{Int32}
   time_units = Ref{Int16}
   max_samples = Ref{Int32}

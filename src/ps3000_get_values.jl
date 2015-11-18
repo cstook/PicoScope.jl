@@ -13,7 +13,7 @@ end
 
 function ps3000_get_values!(handle       :: Int16,
                             buffer       :: ValueBuffer, 
-                            no_of_values :: UInt32)
+                            no_of_values)
   overflow = Ref{Int16}  # bitfield, see doc
   values_per_channel_retruned = ccall((:ps3000_get_values, ps3000driver),Int32,
     (Int16,

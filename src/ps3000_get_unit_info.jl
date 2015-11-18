@@ -3,7 +3,7 @@
 export ps3000_get_unit_info, PS3000GetUnitInfoLine
 
 function ps3000_get_unit_info(handle :: Int16,
-                              line   :: Int16)
+                              line)
   string = Array(UInt8,32)
   returned_string_length = ccall((:ps3000_get_unit_info, ps3000driver), Int16,
     (Int16, Ptr{UInt8}, Int16, Int16),
