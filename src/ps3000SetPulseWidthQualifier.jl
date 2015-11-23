@@ -26,7 +26,7 @@ CONDITION_FALSE (2)
 =#
 
 function ps3000SetPulseWidthQualifier(handle :: Int16,
-                                      conditions :: WPQConditions,
+                                      conditions :: PWQConditions,
                                       direction,
                                       lower,
                                       upper,
@@ -40,7 +40,6 @@ function ps3000SetPulseWidthQualifier(handle :: Int16,
     error("ps3000 Error: one of the parameters is out of range")
   end
   return nothing
-end
 end
 
 function ps3000SetPulseWidthQualifier(handle :: Int16)
@@ -57,5 +56,4 @@ function ps3000SetPulseWidthQualifier(handle :: Int16)
     error("ps3000 Error: one of the parameters is out of range")
   end
   return nothing
-end
 end

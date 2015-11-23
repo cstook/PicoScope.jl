@@ -5,7 +5,6 @@ export ps3000SetAdvTriggerChannelProperties, TriggerChannelProperties, PS3000Thr
 immutable TriggerChannelProperties
   thresholdmajor  :: Int16  # scaled in 16-bit ADC counts
   thresholdminor  :: Int16  # scaled in 16-bit ADC
-  thresholdminor  :: Int16  # 
   hysteresis      :: UInt16 # scaled in 16-bit ADC
   channel         :: Int16 # A = 0, B = 1, C = 2, D = 3 I assume.
   thresholdmode   :: Int16

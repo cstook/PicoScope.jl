@@ -29,7 +29,7 @@ function ps3000_set_trigger2(handle::Int16, source, threshold, direction,
                              delay, auto_trigger_ms)
   ps3000_set_trigger(handle::Int16, source, threshold, direction, 
                      delay, auto_trigger_ms)
-return
+end
 
 baremodule PS3000Source
   const PS3000_CHANNEL_A = 0

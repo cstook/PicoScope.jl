@@ -30,7 +30,7 @@ function ps3000_run_streaming_ns(handle :: Int16,
                           sample_interval,
                           time_unit,
                           max_samples,
-                          auto_stop?0x0001:0x0000
+                          auto_stop?0x0001:0x0000,
                           no_of_samples_per_aggeregate,
                           overview_buffer_size)
 
