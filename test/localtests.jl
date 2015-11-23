@@ -87,6 +87,49 @@ ps3000_set_trigger2(handle, PS3000Source.CHANNEL_A, threshold,
                     PS3000Direction.RISING, delay, autotriggerms)
 println("done")
 
+print("testing ps3000_get_timebase...")
+timebase = 5 #  0 is fastest timebase, 1 is 2x period of 0, etc.
+number_of_samples = 1000
+oversample = 2
+(time_interval, time_units, max_samples) =
+  ps3000_get_timebase(handle, timebase, number_of_samples, oversample)
+println("done")
+
+println("tetsing ps3000_run_block...")
+time_for_adc_to_collect_data_ms = 
+  ps3000_run_block(handle, number_of_samples, timebase, oversample)
+println("  time for ADC to collect data = ",time_for_adc_to_collect_data_ms,"ms")
+println("tetsing ps3000_run_block, done")
+
+print("testing ps3000_ready...")
+while ~ps3000_ready(handle); end
+println("done")
+
+print("testing ps3000_get_values!...")
+vbuffer = ValueBuffer(number_of_samples)
+(values_per_channel_returned, overflow) = 
+  ps3000_get_values!(handle,vbuffer,number_of_samples)
+if overflow != 0
+  print(" overflow! ")
+end
+@test values_per_channel_returned == number_of_samples
+println("done")
+
+print("testing ps3000_get_times_and_values!...")
+time_for_adc_to_collect_data_ms = 
+  ps3000_run_block(handle, number_of_samples, timebase, oversample)
+while ~ps3000_ready(handle); end
+vtbuffer = TimesAndValuesBuffer(number_of_samples)
+(values_per_channel_returned, overflow) = 
+  ps3000_get_times_and_values!(handle, vtbuffer, time_units, number_of_samples)
+if overflow != 0
+  print(" overflow! ")
+end
+@test values_per_channel_returned == number_of_samples
+println("done")
+
+
+
 
 
 print("closing scope...")
