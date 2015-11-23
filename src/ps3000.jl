@@ -23,8 +23,8 @@ include("ps3000_set_ets.jl")
 # include("ps3000_set_siggen.jl")  # I don't have a signal generator in my scope
 include("ps3000_set_trigger.jl")  # and ps3000_set_trigger2
 include("ps3000_stop.jl")
-#include("ps3000SetAdvTriggerChannelConditions.jl")
-#include("ps3000SetAdvTriggerChannelDirections.jl")
+include("ps3000SetAdvTriggerChannelConditions.jl")
+include("ps3000SetAdvTriggerChannelDirections.jl")
 #include("ps3000SetAdvTriggerChannelProperties.jl")
 #include("ps3000SetAdvTriggerDelay.jl")
 #include("ps3000SetPulseWidthQualifier.jl")
