@@ -1,6 +1,6 @@
 # ps3000SetAdvTriggerChannelDirections.jl
 
-export ps3000SetAdvTriggerChannelDirections
+export ps3000SetAdvTriggerChannelDirections, PS3000ThresholdDirection
 
 function ps3000SetAdvTriggerChannelDirections(handle:: Int16, dira, dirb,
                                               dirc, dird, dirext)
@@ -26,7 +26,7 @@ baremodule PS3000ThresholdDirection
   # for window qualified triggers
   const INSIDE  = ABOVE # inside window
   const OUTSIDE = BELOW # outside window
-  
+
   # For window triggers
   const ENTER   = RISING  # entering the window
   const EXIT    = FALLING # leaving the window

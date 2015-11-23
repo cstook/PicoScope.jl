@@ -1,6 +1,6 @@
 # ps3000SetAdvTriggerChannelProperties.jl
 
-export ps3000SetAdvTriggerChannelProperties
+export ps3000SetAdvTriggerChannelProperties, TriggerChannelProperties, PS3000ThresholdMode
 
 immutable TriggerChannelProperties
   thresholdmajor  :: Int16  # scaled in 16-bit ADC counts

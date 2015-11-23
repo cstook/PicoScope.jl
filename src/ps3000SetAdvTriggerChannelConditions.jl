@@ -1,6 +1,6 @@
 # ps3000SetAdvTriggerChannelConditions
 
-export ps3000SetAdvTriggerChannelConditions
+export ps3000SetAdvTriggerChannelConditions, PS3000TriggerState, TriggerConditions
 
 baremodule PS3000TriggerState
   const CONDITION_DONT_CARE = 0x0000
