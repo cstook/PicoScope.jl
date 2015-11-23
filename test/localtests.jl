@@ -128,6 +128,9 @@ end
 @test values_per_channel_returned == number_of_samples
 println("done")
 
+print("testing ps3000_stop...")
+ps3000_stop(handle)
+println("done")
 
 
 
