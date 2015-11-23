@@ -25,6 +25,6 @@ include("ps3000_set_trigger.jl")  # and ps3000_set_trigger2
 include("ps3000_stop.jl")
 include("ps3000SetAdvTriggerChannelConditions.jl")
 include("ps3000SetAdvTriggerChannelDirections.jl")
-#include("ps3000SetAdvTriggerChannelProperties.jl")
+include("ps3000SetAdvTriggerChannelProperties.jl")
 #include("ps3000SetAdvTriggerDelay.jl")
 #include("ps3000SetPulseWidthQualifier.jl")
