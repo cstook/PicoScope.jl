@@ -32,7 +32,7 @@ function ps3000SetPulseWidthQualifier(handle :: Int16,
                                       upper,
                                       pwtype)
   nconditions = 1
-  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver),Int16,
+  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver), Int16,
     (Int16, Ref{PWQConditions}, Int16, Int16, UInt32, UInt32, Int16),
     handle, Ref{PWQConditions}(conditions), conditions, nconditions,
     direction, lower, upper, pwtype)
@@ -48,7 +48,7 @@ function ps3000SetPulseWidthQualifier(handle :: Int16)
   lower = 0
   upper = 0
   pwtype = 0
-  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver),Int16,
+  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver), Int16,
     (Int16, Ref{Void}, Int16, Int16, UInt32, UInt32, Int16),
     handle, Ref{Void}(C_NULL), conditions, nconditions,
     direction, lower, upper, pwtype)

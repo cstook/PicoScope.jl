@@ -15,9 +15,9 @@ function ps3000_get_unit_info(handle :: Int16,
 end
 
 function ps3000_get_unit_info(handle :: Int16)
-  info = Array(ASCIIString,6)
-  for line in Int16(1):Int16(6)
-    info[line] = ps3000_get_unit_info(handle,line)
+  info = Array(ASCIIString,7)
+  for line in Int16(0):Int16(6)
+    info[line+1] = ps3000_get_unit_info(handle,line)
   end
   return info
 end

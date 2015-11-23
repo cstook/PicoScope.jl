@@ -1,6 +1,6 @@
 # ps3000_set_channel.jl
 
-export ps3000_set_channel
+export ps3000_set_channel, PS3000Channel, PS3000Range
 
 function ps3000_set_channel(handle::Int16, channel, enabled, dc, range)
   ps_status = ccall((:ps3000_set_channel, ps3000driver), Int16,
@@ -17,25 +17,25 @@ function ps3000_set_channel(handle::Int16, channel, enabled::Bool, dc::Bool, ran
 end
 
 baremodule PS3000Channel
-  const PS3000_CHANNEL_A = 0
-  const PS3000_CHANNEL_B = 1
-  const PS3000_CHANNEL_C = 2
-  const PS3000_CHANNEL_D = 3
+  const A = 0
+  const B = 1
+  const C = 2
+  const D = 3
 end # module
 
 baremodule PS3000Range
-  const PS3000_20MV = 1  # +/-20mV
-  const PS3000_50MV = 2  # +/-50mV
-  const PS3000_100MV = 3 # +/- 100mV
-  const PS3000_200MV = 4  # +/- 200mV
-  const PS3000_500MV = 5  # +/- 500mV
-  const PS3000_1V = 6 # +/- 1V
-  const PS3000_2V = 7 # +/- 2V
-  const PS3000_5V = 8 # +/- 5V
-  const PS3000_10V = 9 # +/- 10V
-  const PS3000_20V = 10 # +/- 20V
-  const PS3000_50V = 11 # +/- 50V
-  const PS3000_100V = 12 # +/- 100V
-  const PS3000_200V = 13 # +/- 200V
-  const PS3000_400V = 14 # +/- 400V
+  const mV20 = 1  # +/-20mV
+  const mV50 = 2  # +/-50mV
+  const mV100 = 3 # +/- 100mV
+  const mV200 = 4  # +/- 200mV
+  const mV500 = 5  # +/- 500mV
+  const V1 = 6 # +/- 1V
+  const V2 = 7 # +/- 2V
+  const V5 = 8 # +/- 5V
+  const V10 = 9 # +/- 10V
+  const V20 = 10 # +/- 20V
+  const V50 = 11 # +/- 50V
+  const V100 = 12 # +/- 100V
+  const V200 = 13 # +/- 200V
+  const V400 = 14 # +/- 400V
 end # module

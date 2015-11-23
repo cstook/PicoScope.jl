@@ -1,6 +1,6 @@
 # ps3000_set_trigger.jl
 
-export ps3000_set_trigger, ps3000_set_trigger2
+export ps3000_set_trigger, ps3000_set_trigger2, PS3000Source, PS3000Direction
 
 function ps3000_set_trigger(handle::Int16, source, threshold, direction, 
                              delay::Int, auto_trigger_ms)
@@ -32,15 +32,15 @@ function ps3000_set_trigger2(handle::Int16, source, threshold, direction,
 end
 
 baremodule PS3000Source
-  const PS3000_CHANNEL_A = 0
-  const PS3000_CHANNEL_B = 1
-  const PS3000_CHANNEL_C = 2
-  const PS3000_CHANNEL_D = 3
-  const PS3000_EXTERNAL  = 4
-  const PS3000_NONE      = 5
+  const CHANNEL_A = 0
+  const CHANNEL_B = 1
+  const CHANNEL_C = 2
+  const CHANNEL_D = 3
+  const EXTERNAL  = 4
+  const NONE      = 5
 end # module
 
 baremodule PS3000Direction
-  const PS3000_RISING = 0
-  const PS3000_FALLING = 1
+  const RISING = 0
+  const FALLING = 1
 end
