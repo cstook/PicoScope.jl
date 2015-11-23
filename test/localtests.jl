@@ -132,15 +132,10 @@ print("testing ps3000_stop...")
 ps3000_stop(handle)
 println("done")
 
-
-
-
 print("closing scope...")
 ps3000_close_unit(handle)
 println("done")
 
-
-
-
+# include("compatiblestreamingmodetest.jl")
 
 @test 1 == 1
