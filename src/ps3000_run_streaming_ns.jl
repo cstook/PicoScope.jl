@@ -10,7 +10,7 @@ function ps3000_run_streaming_ns(handle :: Int16,
                                  no_of_samples_per_aggeregate,
                                  overview_buffer_size = 0x4000)
   ps_status = ccall((:ps3000_run_streaming_ns, ps3000driver), Int16,
-    (Int16, UInt32, Int16, UInt32, Int16, UInt32, Uint32),
+    (Int16, UInt32, Int16, UInt32, Int16, UInt32, UInt32),
     handle, sample_interval, time_unit, max_samples, auto_stop,
     no_of_samples_per_aggeregate, overview_buffer_size)
   if ps_status == 0
