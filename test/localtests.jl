@@ -132,6 +132,22 @@ print("testing ps3000_stop...")
 ps3000_stop(handle)
 println("done")
 
+print("testing ps3000setadvtriggerchannelconditions...")
+# 
+tsc = TriggerConditions(PS3000TriggerState.CONDITION_TRUE,
+                        PS3000TriggerState.CONDITION_DONT_CARE,
+                        PS3000TriggerState.CONDITION_DONT_CARE,
+                        PS3000TriggerState.CONDITION_DONT_CARE,
+                        PS3000TriggerState.CONDITION_DONT_CARE)
+try  # first call fails.  Why?
+  ps3000setadvtriggerchannelconditions(handle,tsc)
+catch
+  ps3000setadvtriggerchannelconditions(handle,tsc)
+end
+ps3000setadvtriggerchannelconditions(handle) # turn conditions off
+println("done")
+
+print("testing ")
 
 print("closing scope...")
 ps3000_close_unit(handle)

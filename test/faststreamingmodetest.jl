@@ -1,4 +1,4 @@
-# faststreamingmode.jl
+# faststreamingmodetest.jl
 
 using PicoScope
 using Base.Test

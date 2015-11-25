@@ -1,10 +1,10 @@
-# ps3000SetAdvTriggerChannelDirections.jl
+# ps3000setadvtriggerchanneldirections.jl
 
-export ps3000SetAdvTriggerChannelDirections, PS3000ThresholdDirection
+export ps3000setadvtriggerchanneldirections, PS3000ThresholdDirection
 
-function ps3000SetAdvTriggerChannelDirections(handle:: Int16, dira, dirb,
+function ps3000setadvtriggerchanneldirections(handle:: Int16, dira, dirb,
                                               dirc, dird, dirext)
-  ps_status = ccall((:ps3000SetAdvTriggerChannelDirections, ps3000driver), Int16,
+  ps_status = ccall((:ps3000setadvtriggerchanneldirections, ps3000driver), Int16,
     (Int16, Int16, Int16, Int16, Int16, Int16),
     handle, dira, dirb, dirc, dird, dirext)
   if ps_status == 0
