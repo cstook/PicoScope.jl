@@ -1,6 +1,6 @@
 # ps3000setpulsewidthqualifier.jl
 
-export ps3000setpulsewidthqualifier
+export ps3000setpulsewidthqualifier, PWType, PWQConditions 
 
 immutable PWQConditions
   a :: Int16
@@ -11,11 +11,11 @@ immutable PWQConditions
 end
 
 baremodule PWType
-  const PW_TYPE_NONE = 0x0000
-  const PW_TYPE_LESS_THAN = 0x0001
-  const PW_TYPE_GREATER_THAN = 0x0002 
-  const PW_TYPE_IN_RANGE = 0x0003
-  const PW_TYPE_OUT_OF_RANGE = 0x0004
+  const NONE = 0x0000
+  const LESS_THAN = 0x0001
+  const GREATER_THAN = 0x0002 
+  const IN_RANGE = 0x0003
+  const OUT_OF_RANGE = 0x0004
 end
 
 # use PS3000TriggerState for a,b,c,d,ext
@@ -32,9 +32,9 @@ function ps3000setpulsewidthqualifier(handle :: Int16,
                                       upper,
                                       pwtype)
   nconditions = 1
-  ps_status = ccall((:ps3000setpulsewidthqualifier, ps3000driver), Int16,
+  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver), Int16,
     (Int16, Ref{PWQConditions}, Int16, Int16, UInt32, UInt32, Int16),
-    handle, Ref{PWQConditions}(conditions), conditions, nconditions,
+    handle, Ref{PWQConditions}(conditions), nconditions,
     direction, lower, upper, pwtype)
   if ps_status == 0
     error("ps3000 Error: one of the parameters is out of range")
@@ -48,7 +48,7 @@ function ps3000setpulsewidthqualifier(handle :: Int16)
   lower = 0
   upper = 0
   pwtype = 0
-  ps_status = ccall((:ps3000setpulsewidthqualifier, ps3000driver), Int16,
+  ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver), Int16,
     (Int16, Ref{Void}, Int16, Int16, UInt32, UInt32, Int16),
     handle, Ref{Void}(C_NULL), conditions, nconditions,
     direction, lower, upper, pwtype)

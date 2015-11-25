@@ -132,6 +132,9 @@ print("testing ps3000_stop...")
 ps3000_stop(handle)
 println("done")
 
+
+#=
+
 print("testing ps3000setadvtriggerchannelconditions...")
 # 
 tsc = TriggerConditions(PS3000TriggerState.CONDITION_TRUE,
@@ -147,7 +150,51 @@ end
 ps3000setadvtriggerchannelconditions(handle) # turn conditions off
 println("done")
 
-print("testing ")
+print("testing ps3000setadvtriggerchanneldirections...")
+ps3000setadvtriggerchanneldirections(handle,
+  PS3000ThresholdDirection.ABOVE,
+  PS3000ThresholdDirection.BELOW,
+  PS3000ThresholdDirection.RISING,
+  PS3000ThresholdDirection.FALLING,
+  PS3000ThresholdDirection.RISING_OR_FALLING)
+println("done")
+
+print("test ps3000setadvtriggerchannelproperties...")
+thresholdmajor = 1000 # scaled in 16-bit ADC counts
+thresholdminor = 900  # scaled in 16-bit ADC counts
+hysteresis = 10        # scaled in 16-bit ADC counts
+channel = 0           # A = 0, B = 1, C = 2, D = 3 I assume.
+thresholdmode = PS3000ThresholdMode.level
+cp = TriggerChannelProperties(thresholdmajor, thresholdminor,
+                              hysteresis, channel, thresholdmode)
+autotriggerms = 100
+ps3000setadvtriggerchannelproperties(handle,cp,autotriggerms)
+println("done")
+=#
+print("test ps3000setadvtriggerdelay...")
+delay = 50
+pretriggerdelay = Float32(10.0)
+ps3000setadvtriggerdelay(handle, delay, pretriggerdelay)
+println("done")
+
+print("test ps3000setpulsewidthqualifier...")
+conditions = PWQConditions(PS3000TriggerState.CONDITION_TRUE,
+                           PS3000TriggerState.CONDITION_DONT_CARE,
+                           PS3000TriggerState.CONDITION_DONT_CARE,
+                           PS3000TriggerState.CONDITION_DONT_CARE,
+                           PS3000TriggerState.CONDITION_DONT_CARE)
+direction = 1
+lower = 10
+upper = 100
+pwtype = PWType.LESS_THAN
+ps3000setpulsewidthqualifier(handle,
+                             conditions,
+                             direction,
+                             lower,
+                             upper,
+                             pwtype)
+ps3000setpulsewidthqualifier(handle) # disable pulse width conditions
+println("done")
 
 print("closing scope...")
 ps3000_close_unit(handle)
@@ -155,5 +202,3 @@ println("done")
 
 # include("compatiblestreamingmodetest.jl")
 # include("faststreamingmodetest.jl")
-
-@test 1 == 1

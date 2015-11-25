@@ -21,7 +21,7 @@ function ps3000setadvtriggerchannelconditions(handle     :: Int16,
   nconditions = 1
   ps_status = ccall((:ps3000SetAdvTriggerChannelConditions, ps3000driver), Int16,
     (Int16, Ref{TriggerConditions}, Int16),
-    handle, Ref{TriggerConditions}(condititcsons), nconditions)
+    handle, Ref{TriggerConditions}(conditions), nconditions)
   if ps_status == 0
     error("ps3000 Error: one of the parameters is out of range")
   end
