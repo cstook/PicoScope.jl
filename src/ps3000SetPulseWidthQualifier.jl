@@ -49,8 +49,8 @@ function ps3000setpulsewidthqualifier(handle :: Int16)
   upper = 0
   pwtype = 0
   ps_status = ccall((:ps3000SetPulseWidthQualifier, ps3000driver), Int16,
-    (Int16, Ref{Void}, Int16, Int16, UInt32, UInt32, Int16),
-    handle, Ref{Void}(C_NULL), conditions, nconditions,
+    (Int16, Ptr{Void}, Int16, Int16, UInt32, UInt32, Int16),
+    handle, Ptr{Void}(C_NULL), nconditions,
     direction, lower, upper, pwtype)
   if ps_status == 0
     error("ps3000 Error: one of the parameters is out of range")

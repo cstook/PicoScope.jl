@@ -132,34 +132,35 @@ print("testing ps3000_stop...")
 ps3000_stop(handle)
 println("done")
 
-
-#=
+print("closing scope...")
+ps3000_close_unit(handle)
+println("done")
 
 print("testing ps3000setadvtriggerchannelconditions...")
-# 
+handle = ps3000_open_unit()
 tsc = TriggerConditions(PS3000TriggerState.CONDITION_TRUE,
                         PS3000TriggerState.CONDITION_DONT_CARE,
                         PS3000TriggerState.CONDITION_DONT_CARE,
                         PS3000TriggerState.CONDITION_DONT_CARE,
                         PS3000TriggerState.CONDITION_DONT_CARE)
-try  # first call fails.  Why?
-  ps3000setadvtriggerchannelconditions(handle,tsc)
-catch
-  ps3000setadvtriggerchannelconditions(handle,tsc)
-end
+ps3000setadvtriggerchannelconditions(handle,tsc)
 ps3000setadvtriggerchannelconditions(handle) # turn conditions off
+ps3000_close_unit(handle)
 println("done")
 
 print("testing ps3000setadvtriggerchanneldirections...")
+handle = ps3000_open_unit()
 ps3000setadvtriggerchanneldirections(handle,
   PS3000ThresholdDirection.ABOVE,
   PS3000ThresholdDirection.BELOW,
   PS3000ThresholdDirection.RISING,
   PS3000ThresholdDirection.FALLING,
   PS3000ThresholdDirection.RISING_OR_FALLING)
+ps3000_close_unit(handle)
 println("done")
 
-print("test ps3000setadvtriggerchannelproperties...")
+print("testing ps3000setadvtriggerchannelproperties...")
+handle = ps3000_open_unit()
 thresholdmajor = 1000 # scaled in 16-bit ADC counts
 thresholdminor = 900  # scaled in 16-bit ADC counts
 hysteresis = 10        # scaled in 16-bit ADC counts
@@ -169,34 +170,30 @@ cp = TriggerChannelProperties(thresholdmajor, thresholdminor,
                               hysteresis, channel, thresholdmode)
 autotriggerms = 100
 ps3000setadvtriggerchannelproperties(handle,cp,autotriggerms)
+ps3000_close_unit(handle)
 println("done")
-=#
-print("test ps3000setadvtriggerdelay...")
+
+print("testing ps3000setadvtriggerdelay...")
+handle = ps3000_open_unit()
 delay = 50
 pretriggerdelay = Float32(10.0)
 ps3000setadvtriggerdelay(handle, delay, pretriggerdelay)
+ps3000_close_unit(handle)
 println("done")
 
-print("test ps3000setpulsewidthqualifier...")
+print("testing ps3000setpulsewidthqualifier...")
+handle = ps3000_open_unit()
 conditions = PWQConditions(PS3000TriggerState.CONDITION_TRUE,
                            PS3000TriggerState.CONDITION_DONT_CARE,
                            PS3000TriggerState.CONDITION_DONT_CARE,
                            PS3000TriggerState.CONDITION_DONT_CARE,
                            PS3000TriggerState.CONDITION_DONT_CARE)
-direction = 1
-lower = 10
-upper = 100
+direction = PS3000ThresholdDirection.RISING
+lower = 1000
+upper = 100000
 pwtype = PWType.LESS_THAN
-ps3000setpulsewidthqualifier(handle,
-                             conditions,
-                             direction,
-                             lower,
-                             upper,
-                             pwtype)
+ps3000setpulsewidthqualifier(handle, conditions, direction, lower, upper, pwtype)
 ps3000setpulsewidthqualifier(handle) # disable pulse width conditions
-println("done")
-
-print("closing scope...")
 ps3000_close_unit(handle)
 println("done")
 
